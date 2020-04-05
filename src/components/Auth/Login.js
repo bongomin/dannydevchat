@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Grid, Form, Segment, Header, Message, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import firebase from '../../firebase';
+
+
 class Login extends Component {
    // global state object
    state = {
@@ -16,37 +19,37 @@ class Login extends Component {
    }
    handleSubmit = (e) => {
       e.preventDefault();
-      if(this.isFormValid(this.state)){
-         this.setState({errors:[],loading:true})
-         
-         .auth()
-         .signinWithEmailAndPassword(this.state.email,this.state.password)
-         .then(signedInUser =>{
-            console.log(signedInUser)
-         })
-         .catch(error => {
-            console.error(error)
-            this.setState({ 
-               error : this.state.errors.concat(error),
-               loadind:false
+      if (this.isFormValid(this.state)) {
+         this.setState({ errors: [], loading: true })
+         firebase
+            .auth()
+            .signInWithEmailAndPassword(this.state.email, this.state.password)
+            .then(signedInUser => {
+               console.log(signedInUser)
+            })
+            .catch(error => {
+               console.error(error)
+               this.setState({
+                  errors: this.state.errors.concat(error),
+                  loading: false
+               });
             });
-         });
       }
 
    };
-     // function handling form validation
-     isFormValid = ({email,password}) => email && password;
+   // function handling form validation
+   isFormValid = ({ email, password }) => email && password;
    // now i want to display the errors to the users
    displayErrors = errors => errors.map((error, i) => <p key={i}>{error.message}</p>);
 
-   
 
-   handleInputError = (errors,inputName)=>{
-     return errors.some(error=>error.message.toLowerCase().includes(inputName))? "error": ""
+
+   handleInputError = (errors, inputName) => {
+      return errors.some(error => error.message.toLowerCase().includes(inputName)) ? "error" : ""
 
    }
    render() {
-      const { email, password,errors, loading } = this.state;
+      const { email, password, errors, loading } = this.state;
       return (
          <Grid textAlign="center" verticleAlign="middle" style={{ height: "100vh", backGround: "#eee", padding: "5em" }}>
             <Grid.Column style={{ maxWidth: 450 }}>
@@ -57,26 +60,26 @@ class Login extends Component {
                </Header>
                <Form size="Large" onSubmit={this.handleSubmit}>
                   <Segment>
-                     <Form.Input 
-                      className={this.handleInputError(errors,'email')}
-                      type="email" fluid 
-                      name="email" 
-                      value={email}
-                      icon="mail"
-                      iconPosition="left" 
-                      placeholder="Email" 
-                      onChange={this.handleChange} />
-                     <Form.Input 
-                     className={this.handleInputError(errors,'password')}
-                     type="password" 
-                     fluid 
-                     name="password"
-                      value={password} 
-                      icon="lock" 
-                      iconPosition="left" 
-                      placeholder="password" 
-                      onChange={this.handleChange} 
-                      />
+                     <Form.Input
+                        className={this.handleInputError(errors, 'email')}
+                        type="email" fluid
+                        name="email"
+                        value={email}
+                        icon="mail"
+                        iconPosition="left"
+                        placeholder="Email"
+                        onChange={this.handleChange} />
+                     <Form.Input
+                        className={this.handleInputError(errors, 'password')}
+                        type="password"
+                        fluid
+                        name="password"
+                        value={password}
+                        icon="lock"
+                        iconPosition="left"
+                        placeholder="password"
+                        onChange={this.handleChange}
+                     />
                      <Button disabled={loading} className={loading ? 'loading' : ""} color="violet" fluid size="Large">Login</Button>
                   </Segment>
                </Form>
