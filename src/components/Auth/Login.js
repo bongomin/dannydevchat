@@ -19,7 +19,8 @@ class Login extends Component {
       e.preventDefault();
       if (this.isFormValid(this.state)) {
          this.setState({ errors: [], loading: true })
-         firebase.auth()
+         firebase
+            .auth()
             .signinWithEmailAndPassword(this.state.email, this.state.password)
             .then(signedInUser => {
                console.log(signedInUser)
@@ -87,7 +88,7 @@ class Login extends Component {
                   </Message>
                )}
                <Message>
-                  Do not have an Account? <Link to="/register">register</Link>
+                  Don't have an Account? <Link to="/register">register</Link>
                </Message>
             </Grid.Column >
          </Grid>

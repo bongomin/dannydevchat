@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Grid, Form, Segment, Header, Message, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 import md5 from 'md5';
-import firebase from '../../firebase';
+import firebase from '../../firebase'
 class Signup extends Component {
    // global state object
    state = {
