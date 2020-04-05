@@ -21,15 +21,15 @@ class Login extends Component {
          this.setState({ errors: [], loading: true })
          firebase
             .auth()
-            .signinWithEmailAndPassword(this.state.email, this.state.password)
+            .signInWithEmailAndPassword(this.state.email, this.state.password)
             .then(signedInUser => {
                console.log(signedInUser)
             })
             .catch(error => {
                console.error(error)
                this.setState({
-                  error: this.state.errors.concat(error),
-                  loadind: false
+                  errors: this.state.errors.concat(error),
+                  loading: false
                });
             });
       }
