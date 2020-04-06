@@ -45,10 +45,10 @@ class UserPanel extends Component {
             <Grid.Column>
                <Grid.Row style={{ padding: "1.2em", margin: 0 }} >
                   {/* App Header */}
-                  <Header inverted floated="left" as="h2" >
+                  <Header inverted floated="left" as="h3" >
                      <Icon name="code" />
                      <Header.Content>
-                        dannyDevChat
+                        DannyDevChat
                   </Header.Content>
                   </Header>
                </Grid.Row>
