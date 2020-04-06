@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import { Grid } from "semantic-ui-react"
 import ColorPanel from './ColorPanel/ColorPanel';
 import SidePanel from './SidePanel/SidePanel';
@@ -8,7 +9,7 @@ import { connect } from 'react-redux';
 
 function App({ currentUser }) {
   return (
-    <Grid columns="equal" className="app" style={{ background: '#eee' }}>
+    <Grid columns="equal" className="app" style={{ background: "#eee" }}>
       <ColorPanel />
       <SidePanel currentUser={currentUser} />
       <Grid.Column style={{ marginLeft: "320px" }}>

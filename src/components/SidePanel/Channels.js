@@ -60,7 +60,7 @@ class Channels extends Component {
             style={{ opersity: 0.7 }}
             active={channel.id === this.state.activeChannel}
          >
-            # {channel.name}
+            $ {channel.name}
          </Menu.Item >
       ))
    )
@@ -80,7 +80,23 @@ class Channels extends Component {
    componentDidMount() {
       this.addListeners();
    }
+   // removing listeners added
+   componentWillUnmount() {
+      this.removeListeners();
+   }
 
+   addListeners = () => {
+      let loadedChannels = [];
+      this.state.channelsRef.on("child_added", snap => {
+         loadedChannels.push(snap.val());
+         this.setState({ channels: loadedChannels }, () => this.setFirstChannel());
+      });
+   };
+
+   removeListeners = () => {
+      this.state.channelsRef.off();
+   };
+   // end of removing listeners
    addListeners = () => {
       let loadedChannels = [];
       this.state.channelsRef.on('child_added', snap => {
@@ -144,7 +160,13 @@ class Channels extends Component {
             </Menu.Menu>
             {/* // Add channel Modal */}
             <Modal basic open={modal} onClose={this.closeModal} >
-               <Modal.Header>Add a Channel</Modal.Header>
+               <Modal.Header>
+                  <Icon name="add" size="small" />
+                  Add a Channel
+                  <span style={{ float: "right" }}>
+                     <small style={{ color: "orange" }}>developed by bongomindaniel</small>
+                  </span>
+               </Modal.Header>
                <Modal.Content>
                   <Form onSubmit={this.handleSubmit}>
                      <Form.Field>
