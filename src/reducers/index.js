@@ -23,7 +23,7 @@ const user_reducer = (state = initialUserState, action) => {
          return state;
    }
 
-}
+};
 
 const initialChannelState = {
    currentChannel: null
@@ -31,14 +31,11 @@ const initialChannelState = {
 
 const channel_reducer = (state = initialChannelState, action) => {
    switch (action.type) {
-      case actionTypes.SET_CURRENT_CHANNEL:
-         return {
-            ...state,
-            currentChannel: action.payLoad.currentChannel
-         }
+      case actionTypes.SET_CURRENT_CHANNEL: return {
+         currentUser: action.payLoad.currentChannel,
+      };
       default:
          return state;
-
    }
 }
 

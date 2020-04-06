@@ -90,9 +90,8 @@ class Channels extends Component {
    }
 
    setFirstChannel = () => {
-
       const firstChannel = this.state.channels[0];
-      if (this.state.firstLoad && this.state.channels > 0) {
+      if (this.state.firstLoad && this.state.channels.length > 0) {
          this.props.setCurrentChannel(firstChannel);
          this.setActiveChannel(firstChannel);
       }
@@ -115,8 +114,7 @@ class Channels extends Component {
          }
       };
 
-      channelsRef
-         .child(key)
+      channelsRef.child(key)
          .update(newChannel)
          .then(() => {
             this.setState({ channelName: '', channelDetails: '' });
@@ -137,8 +135,8 @@ class Channels extends Component {
             <Menu.Menu style={{ paddingBottom: "2em" }}>
                <Menu.Item>
                   <span>
-                     <Icon name="exchange" />CHANNELS
-               </span>{""}
+                     <Icon name="exchange" /> CHANNELS
+               </span>  {""}
                ({channels.length}) <Icon name="add" onClick={this.openModal} />
                </Menu.Item>
                {/* channels created */}
