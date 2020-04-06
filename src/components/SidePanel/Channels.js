@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Menu, Icon, Modal, Form, Input, Button } from 'semantic-ui-react';
 import firebase from '../../firebase';
+import { connect } from 'react-redux';
+import { setCurrentChannel } from '../../actions'
 
 
 
@@ -33,6 +35,25 @@ class Channels extends Component {
       })
    }
 
+   changeChannel = channel => {
+      this.props.setCurrentChannel(channel)
+   }
+
+   displayChannels = channels => (
+
+      channels.length > 0 && channels.map(channel => (
+         <Menu.Item
+            key={channel.id}
+            onClick={() => this.changeChannel(channel)}
+            name={channel.name}
+            style={{ opersity: 0.7 }}
+         >
+            #{channel.name}
+         </Menu.Item >
+      ))
+   )
+
+
    // handle submit function
    handleSubmit = (event) => {
       event.preventDefault()
@@ -42,6 +63,20 @@ class Channels extends Component {
    }
    // form validation
    isFormValid = ({ channelDetails, channelName }) => channelDetails && channelName;
+
+
+   componentDidMount() {
+      this.addListeners();
+   }
+
+   addListeners = () => {
+      let loadedChannels = [];
+      this.state.channelsRef.on('child_added', snap => {
+         loadedChannels.push(snap.val());
+         this.setState({ channels: loadedChannels });
+      })
+
+   }
 
    addChannel = () => {
       const { channelsRef, channelName, channelDetails, user } = this.state;
@@ -84,7 +119,8 @@ class Channels extends Component {
                </span>{""}
                ({channels.length}) <Icon name="add" onClick={this.openModal} />
                </Menu.Item>
-
+               {/* channels created */}
+               {this.displayChannels(channels)}
             </Menu.Menu>
             {/* // Add channel Modal */}
             <Modal basic open={modal} onClose={this.closeModal} >
@@ -128,4 +164,6 @@ class Channels extends Component {
    }
 }
 
-export default Channels
+export default connect(null,
+   { setCurrentChannel }
+)(Channels)
