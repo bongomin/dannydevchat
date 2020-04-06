@@ -32,7 +32,6 @@ const initialChannelState = {
 const channel_reducer = (state = initialChannelState, action) => {
    switch (action.type) {
       case actionTypes.SET_CURRENT_CHANNEL:
-
          return {
             ...state,
             currentChannel: action.payLoad.currentChannel
