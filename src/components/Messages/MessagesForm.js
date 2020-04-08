@@ -4,12 +4,34 @@ import firebase from '../../firebase'
 
 class MessagesForm extends Component {
    state = {
-      message: '',
-      channel: this.props.currentChannel,
-      user: this.props.currentUser,
+      message: "",
+      channel: "",
+      user: "",
       loading: false,
       errors: []
    };
+
+   componentWillReceiveProps(newProps) {
+      console.log(newProps);
+      console.log(this.props);
+      if (this.props.currentChannel !== newProps.currentChannel) {
+         this.setState({ channel: newProps.currentChannel })
+      }
+
+
+      if (this.props.currentUser !== newProps.currentUser) {
+         this.setState({ user: newProps.currentUser })
+      }
+
+   }
+
+   componentWillMount() {
+      this.setState({
+         channel: this.props.currentChannel,
+         user: this.props.currentUser
+      })
+   }
+
    // handle change function
    handleChange = event => {
       this.setState({ [event.target.name]: event.target.value });
@@ -30,6 +52,7 @@ class MessagesForm extends Component {
    };
    // send message function
    sendMessage = () => {
+      console.log(this.props, "props displayed now");
       const { messagesRef } = this.props;
       const { message, channel } = this.state;
 
@@ -58,6 +81,7 @@ class MessagesForm extends Component {
 
    render() {
       const { errors, message, loading } = this.state;
+      console.log(this.props, "this are the props here")
 
       return (
          <Segment className="message__form">
