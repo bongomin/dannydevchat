@@ -1,7 +1,6 @@
 import * as actionTypes from '../actions/types';
 import { combineReducers } from 'redux';
 
-
 const initialUserState = {
    currentUser: null,
    isLoading: true
