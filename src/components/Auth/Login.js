@@ -49,10 +49,10 @@ class Login extends Component {
    render() {
       const { email, password, errors, loading } = this.state;
       return (
-         <Grid textAlign="center" verticleAlign="middle" style={{ height: "100vh", backGround: "#eee", padding: "5em" }}>
+         <Grid textAlign="center" verticalAlign="middle" className="app">
             <Grid.Column style={{ maxWidth: 450 }}>
                <Header as="h2" icon color="violet" textAlign="center">
-                  <Icon name="code branch" color="violet">
+                  <Icon name="code" color="violet">
                   </Icon>
                   Login to dannyDevChat
                </Header>

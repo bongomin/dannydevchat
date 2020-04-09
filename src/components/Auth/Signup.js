@@ -109,7 +109,7 @@ class Signup extends Component {
          <Grid textAlign="center" verticleAlign="middle" style={{ height: "100vh", backGround: "#eee", padding: "5em" }}>
             <Grid.Column style={{ maxWidth: 450 }}>
                <Header as="h2" icon color="violet" textAlign="center">
-                  <Icon name="street view" color="violet">
+                  <Icon name="registered outline" color="violet">
 
                   </Icon>
                   Register for dannyDevChat
