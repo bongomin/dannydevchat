@@ -4,6 +4,7 @@ import MessagesHeader from "./MessagesHeader";
 import MessageForm from "./MessagesForm";
 import firebase from '../../firebase';
 import Message from "./Message";
+import ProgressBar from "./ProgressBar";
 
 class Messages extends Component {
    state = {
@@ -11,7 +12,8 @@ class Messages extends Component {
       messages: [],
       messagesLoading: true,
       channel: this.props.currentChannel,
-      user: this.props.currentUser
+      user: this.props.currentUser,
+      ProgressBar: false
    };
 
    componentDidMount() {
@@ -47,15 +49,21 @@ class Messages extends Component {
          />
       ));
 
+   isProgessBarVisible = percent => {
+      if (percent > 0) {
+         this.setState({ ProgressBar: true })
+      }
+   }
+
    render() {
-      const { messagesRef, messages, channel, user } = this.state;
+      const { messagesRef, messages, channel, user,ProgressBar } = this.state;
 
       return (
          <React.Fragment>
             <MessagesHeader />
 
             <Segment>
-               <Comment.Group className="messages">
+               <Comment.Group className={ProgressBar ? 'messages__progress' : 'messages'}>
                   {this.displayMessages(messages)}
                </Comment.Group>
             </Segment>
@@ -64,6 +72,7 @@ class Messages extends Component {
                messagesRef={messagesRef}
                currentChannel={channel}
                currentUser={user}
+               isProgessBarVisible={this.isProgessBarVisible}
             />
          </React.Fragment>
       );
