@@ -1,7 +1,6 @@
 import * as actionTypes from '../actions/types';
 import { combineReducers } from 'redux';
 
-
 const initialUserState = {
    currentUser: null,
    isLoading: true
@@ -32,7 +31,7 @@ const initialChannelState = {
 const channel_reducer = (state = initialChannelState, action) => {
    switch (action.type) {
       case actionTypes.SET_CURRENT_CHANNEL: return {
-         currentUser: action.payLoad.currentChannel,
+         currentChannel: action.payLoad.currentChannel,
       };
       default:
          return state;
