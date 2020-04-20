@@ -1,4 +1,4 @@
-import React from "react";
+import React ,[Component] from "react";
 import firebase from "../../firebase";
 import {
   Grid,
@@ -11,7 +11,7 @@ import {
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-class Login extends React.Component {
+class Login extends Component {
   state = {
     email: "",
     password: "",

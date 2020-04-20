@@ -16,6 +16,7 @@ class Channels extends React.Component {
     firstLoad: true
   };
 
+
   componentDidMount() {
     this.addListeners();
   }
