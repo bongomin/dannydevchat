@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 
-class MetaPanel extends React.Component {
+class MetaPanel extends Component {
   render() {
     return <div>MetaPanel</div>;
   }

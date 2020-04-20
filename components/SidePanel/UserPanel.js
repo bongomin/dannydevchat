@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import firebase from "../../firebase";
 import { Grid, Header, Icon, Dropdown, Image } from "semantic-ui-react";
 
-class UserPanel extends React.Component {
+class UserPanel extends Component {
   state = {
     user: this.props.currentUser
   };

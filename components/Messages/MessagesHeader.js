@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { Header, Segment, Input, Icon } from "semantic-ui-react";
 
-class MessagesHeader extends React.Component {
+class MessagesHeader extends Component {
   render() {
     return (
       <Segment clearing>

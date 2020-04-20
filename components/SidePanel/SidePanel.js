@@ -1,9 +1,9 @@
-import React from "react";
+import React,{Component} from "react";
 import UserPanel from "./UserPanel";
 import Channels from "./Channels";
 import { Menu } from "semantic-ui-react";
 
-class SidePanel extends React.Component {
+class SidePanel extends Component {
   render() {
     const { currentUser } = this.props;
 
