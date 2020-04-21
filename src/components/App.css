@@ -49,3 +49,7 @@ overflow-y: scroll;
  .progress__bar{
    margin: 0.3em 0 0 0 !important;
  }
+/* sidePanel.js */
+ .menu{
+   padding-bottom: 2em;
+ }
