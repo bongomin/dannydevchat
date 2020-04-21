@@ -122,7 +122,7 @@ class Channels extends Component {
             <Menu.Menu style={{ paddingBottom: "2em" }}>
                <Menu.Item>
                   <span>
-                     <Icon name="exchange" /> CHANNELS
+                     <Icon name="random" color="orange" /> CHANNELS
             </span>{" "}
             ({channels.length}) <Icon name="add" onClick={this.openModal} />
                </Menu.Item>
