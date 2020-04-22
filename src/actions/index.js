@@ -25,3 +25,13 @@ export const setCurrentChannel = channel => {
       }
    }
 }
+
+// private channel actions
+export const setPrivateChannel = isPrivateChannel =>{
+   return{
+      type:actionTypes.SET_PRIVATE_CHANNEL,
+      payLoad:{
+         isPrivateChannel
+      }
+   }
+}
