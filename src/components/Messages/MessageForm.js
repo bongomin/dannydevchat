@@ -53,7 +53,7 @@ class MessageForm extends React.Component {
       this.setState({ loading: true });
       getMessagesRef()
         .child(channel.id)
-        .push()
+        .push() 
         .set(this.createMessage())
         .then(() => {
           this.setState({ loading: false, message: "", errors: [] });
