@@ -60,19 +60,21 @@ class Messages extends React.Component {
 
 
   // handle search messages function
-  handleSeacrhMessages = () => {
+  handleSearchMessages = () => {
     const channelMessages = [...this.state.messages];
-    const regex = new RegExp(this.state.searchTerm, 'gi');
+    const regex = new RegExp(this.state.searchTerm, "gi");
     const searchResults = channelMessages.reduce((acc, message) => {
-      if (message.content && message.content.match(regex) || message.user.name.match(regex)) {
-        acc.push(message)
+      if (
+        (message.content && message.content.match(regex)) ||
+        message.user.name.match(regex)
+      ) {
+        acc.push(message);
       }
       return acc;
     }, []);
-
     this.setState({ searchResults });
-    setTimeout(() => this.setState({ searchLoading: false }), 1000)
-  }
+    setTimeout(() => this.setState({ searchLoading: false }), 1000);
+  };
 
   countUniqueUsers = messages => {
     const uniqueUsers = messages.reduce((acc, message) => {
