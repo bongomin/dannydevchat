@@ -57,8 +57,8 @@ class Messages extends React.Component {
         if (data.val() !== null) {
           const channelIds = Object.keys(data.val());
           const prevStarred = channelIds.includes(channelId);
-          this.setState({isChannelStarred:prevStarred});
-          
+          this.setState({ isChannelStarred: prevStarred });
+
         }
       })
   }
@@ -105,7 +105,7 @@ class Messages extends React.Component {
     this.setState({
       searchTerm: event.target.value,
       searchLoading: true
-    }, () => this.handleSeacrhMessages());
+    }, () => this.handleSearchMessages());
   }
 
 
