@@ -68,7 +68,7 @@ class Starred extends Component {
             active={channel.id === this.state.activeChannel}
          >
 
-            # {channel.name}
+            $ {channel.name}
          </Menu.Item>
       ));
 

@@ -41,8 +41,6 @@ class Root extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Signup} />
       </Switch>
-
-
     );
   }
 }

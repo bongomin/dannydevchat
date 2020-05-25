@@ -190,7 +190,7 @@ class Channels extends Component {
             {this.getNotificationCount(channel) && (
                <Label color="red">{this.getNotificationCount(channel)}</Label>
             )}
-        # {channel.name}
+        $ {channel.name}
          </Menu.Item>
       ));
 
