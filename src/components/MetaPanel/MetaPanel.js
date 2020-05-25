@@ -7,7 +7,6 @@ class MetaPanel extends Component {
       privateChannel: this.props.isPrivateChannel,
       activeIndex: 0
    }
-
    setActiveIndex = (event, titleProps) => {
       const { index } = titleProps;
       const { activeIndex } = this.state;
@@ -22,7 +21,7 @@ class MetaPanel extends Component {
          <Segment>
             <Header as="h3" attached="top" color="orange" style={{ background: "#3359DF" }}>
                About # Channel
-               </Header>
+            </Header>
             <Accordion styled attached="true" style={{ color: "olive" }}>
                <Accordion.Title
                   active={activeIndex === 0}

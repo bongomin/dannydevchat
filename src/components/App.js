@@ -23,8 +23,8 @@ const App = ({ currentUser, currentChannel, isPrivateChannel }) => (
         currentUser={currentUser}
         isPrivateChannel={isPrivateChannel}
       />
-    </Grid.Column>
-
+   </Grid.Column>
+ 
     <Grid.Column width={4}>
       <MetaPanel
           key={currentChannel && currentChannel.id}
