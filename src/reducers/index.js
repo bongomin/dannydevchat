@@ -3,7 +3,8 @@ import { combineReducers } from 'redux';
 
 const initialUserState = {
    currentUser: null,
-   isLoading: true
+   isLoading: true,
+   userPosts: null
 
 };
 
@@ -31,16 +32,21 @@ const initialChannelState = {
 
 const channel_reducer = (state = initialChannelState, action) => {
    switch (action.type) {
-      case actionTypes.SET_CURRENT_CHANNEL: 
-      return {
-         ...state,
-         currentChannel: action.payLoad.currentChannel,
-      }
+      case actionTypes.SET_CURRENT_CHANNEL:
+         return {
+            ...state,
+            currentChannel: action.payLoad.currentChannel,
+         }
       case actionTypes.SET_PRIVATE_CHANNEL:
          return {
             ...state,
             isPrivateChannel: action.payLoad.isPrivateChannel
 
+         }
+      case actionTypes.SET_USER_POSTS:
+         return {
+            ...state,
+            userPosts: action.payLoad.userPosts
          }
       default:
          return state;
